@@ -1,0 +1,54 @@
+<mat-toolbar>
+  <button mat-icon-button *ngIf="sidenav.mode === 'over'" (click)="sidenav.toggle()">
+    <mat-icon *ngIf="!sidenav.opened">
+        menu
+    </mat-icon>
+    <mat-icon *ngIf="sidenav.opened">
+        close
+    </mat-icon>
+  </button>
+
+  {{ title }}
+</mat-toolbar>
+
+<mat-drawer-container>
+  <mat-drawer mode="side" opened #sidenav>
+
+    <a class="profile-anchor" routerLink="/">
+      <img class="avatar mat-elevation-z8" src="https://source.unsplash.com/c_GmwfHBDzk/200x200" />
+
+      <h4 class="name">
+        Xaamin
+        <br>
+        <small class="text-muted text-small">Software Engineer</small>
+      </h4>
+    </a>
+
+    <div class="py-3"></div>
+
+    <button mat-button class="menu-button">
+
+    </button>
+
+    <a mat-button class="menu-button" routerLink="/forms">
+      <mat-icon>format_color_text</mat-icon>
+      <span>Forms</span>
+    </a>
+
+    <a mat-button class="menu-button" routerLink="/tables">
+      <mat-icon>reorder</mat-icon>
+      <span>Tables</span>
+    </a>
+
+    <mat-divider></mat-divider>
+
+    <a mat-button class="menu-button" routerLink="/">
+      <mat-icon>person</mat-icon>
+      <span>Me</span>
+    </a>
+  </mat-drawer>
+
+  <mat-drawer-content class="drawer-content">
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
