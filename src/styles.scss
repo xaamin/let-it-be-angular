@@ -1,0 +1,102 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$let-it-be-angular-primary: mat.define-palette(mat.$indigo-palette);
+$let-it-be-angular-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$let-it-be-angular-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$let-it-be-angular-theme: mat.define-light-theme((
+  color: (
+    primary: $let-it-be-angular-primary,
+    accent: $let-it-be-angular-accent,
+    warn: $let-it-be-angular-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($let-it-be-angular-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-form-field.mat-form-field {
+  width: 100%;
+}
+
+.py-3 {
+  padding: 15px 0px;
+}
+
+legend {
+  font-weight: bold;
+}
+
+
+/* Grid
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.container {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  display: block;
+}
+
+.row {
+  width: 100%;
+  position: relative;
+  display: block;
+}
+
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  padding: 20px 5px;
+  box-sizing: border-box;
+}
+
+/* For devices larger than 400px */
+@media (min-width: 400px) {
+  .container {
+    padding: 0;
+  }
+}
+
+/* For devices larger than 550px */
+@media (min-width: 550px) {
+  .one-half.column {
+    width: 50%;
+  }
+
+  .one-third.column {
+    width: 33.6666666667%;
+  }
+
+  .two-thirds.column {
+    width: 66.6666666667%;
+  }
+
+}
+
+.text-success {
+  color: #5CB85C;
+}
