@@ -1,0 +1,59 @@
+
+
+<form class="new-entry-form" [formGroup]="form">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="one-third column">
+        <legend>Contact Details</legend>
+
+        <mat-form-field appearance="standard">
+          <mat-label>Name</mat-label>
+          <input matInput type="text" placeholder="" [formControl]="$any(form.controls['name'])" maxlength="150">
+          <mat-error *ngIf="form.controls['name'].invalid">Name is required, max: 150</mat-error>
+        </mat-form-field>
+
+        <div></div>
+
+        <mat-form-field appearance="standard">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" placeholder="Ex. me@email.dev" [formControl]="$any(form.controls['email'])" maxlength="150">
+          <mat-error *ngIf="form.controls['email'].invalid">Email is required</mat-error>
+        </mat-form-field>
+
+        <div></div>
+
+        <mat-form-field appearance="standard">
+          <mat-label>Phone number</mat-label>
+          <input matInput type="text" placeholder="Ex. +52 55 5555 55555" [formControl]="$any(form.controls['phone'])" min="1985" max="2022">
+          <mat-error *ngIf="form.controls['phone'].invalid">Year is required, prefix it with a +, include country code</mat-error>
+        </mat-form-field>
+
+        <div></div>
+      </div>
+
+      <div class="one-third column">
+        <nested-form [form]="form" #address></nested-form>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column">
+        <div class="text-right">
+          <button mat-raised-button [disabled]="isBusy" (click)="onCancelClick()">
+            Cancel
+          </button>
+
+          {{ ' ' }}
+
+          <button mat-raised-button color="primary" [disabled]="form.invalid || isBusy" (click)="onSubmitClick()">
+            {{ isBusy ? 'Adding...' : 'Add' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</form>

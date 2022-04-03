@@ -1,0 +1,54 @@
+<form-events
+  [isBusy]="isBusy"
+  (onChange)="handleOnChange($event)"
+  (onCancel)="handleOnCancel($event)"
+  (onSubmit)="handleOnSubmit($event)"
+></form-events>
+
+<div class="container">
+  <div class="row" *ngIf="!!response">
+    <div class="column">
+      <p class="text-success">Successful registration</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="column">
+      <strong>Event log</strong>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="one-half column">
+      <ul>
+        <li *ngFor="let item of events">{{ item }}</li>
+      </ul>
+    </div>
+
+    <div class="one-half column">
+      <mat-checkbox [(ngModel)]="options.cancel">Cancel button click</mat-checkbox>
+      <div></div>
+      <mat-checkbox [(ngModel)]="options.submit">Submit button click</mat-checkbox>
+      <div></div>
+      <mat-checkbox [(ngModel)]="options.valid">Form valid state</mat-checkbox>
+      <div></div>
+      <mat-checkbox [(ngModel)]="options.invalid">Form invalid state</mat-checkbox>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="column">
+      Goal:
+      <ul>
+        <li>Reactive forms usage</li>
+        <li>Validations</li>
+        <li>Nested forms</li>
+        <li>Comunication from child to parent components (@Output)</li>
+        <li>Share data from parent to child components (@Input)</li>
+        <li>Action button state control based on events</li>
+        <li>Services usage</li>
+        <li>Control http request state with indicators</li>
+        <li>Usage of RxJS</li>
+      </ul>
+    </div>
+  </div>
+</div>
